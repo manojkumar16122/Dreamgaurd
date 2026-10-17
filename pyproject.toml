@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dreamguard"
+version = "0.1.0"
+description = "Reversible memory compilation for AI agents: compress memory without losing the raw data, and roll back when recall drops."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Manojkumar V" }]
+keywords = ["ai", "agents", "llm", "memory", "rollback", "context-compression"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = []  # core library is pure standard library
+
+[project.optional-dependencies]
+groq = ["groq>=0.11"]
+server = ["fastapi>=0.110", "uvicorn>=0.29", "python-dotenv>=1.0", "groq>=0.11"]
+dev = ["pytest>=8", "httpx>=0.27", "build", "twine"]
+
+[project.urls]
+Homepage = "https://github.com/manojkumar16122/dreamguard"
+Issues = "https://github.com/manojkumar16122/dreamguard/issues"
+
+[project.scripts]
+dreamguard = "dreamguard.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dreamguard*"]
+
+[tool.setuptools.package-data]
+dreamguard = ["static/*", "py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

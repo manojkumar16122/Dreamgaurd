@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DreamGuard Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🛡️ DreamGuard</h1>
+    <p>Reversible memory compilation for AI agents · <a href="/live" style="color:#3b82f6">Live Groq demo →</a></p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Live Memory</h2>
+      <div class="buttons">
+        <button id="btn-seed">Add 10 episodes</button>
+        <button id="btn-dream">✨ Dream (compress)</button>
+        <button id="btn-rollback" class="danger">⏪ Rollback</button>
+        <button id="btn-reset" class="ghost">Reset</button>
+      </div>
+      <form id="record-form" class="record">
+        <input id="record-input" placeholder="Record an episode, e.g. api_port=8421" maxlength="2000">
+        <button type="submit">Record</button>
+      </form>
+      <div class="stats" id="stats"></div>
+      <div id="memory-list" class="log-box"></div>
+      <p class="hint">Dream compresses uncovered episodes into a fact but keeps the raw rows.
+        Rollback deactivates the compressed facts and restores the raw context.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Benchmark: detail recall over 50 turns</h2>
+      <div class="controls">
+        <label>Rollback at turn
+          <input id="rollback-at" type="number" min="1" max="50" value="40"></label>
+        <label><input id="auto" type="checkbox"> Auto-rollback when accuracy &lt; 85%</label>
+        <button id="btn-bench">Run benchmark</button>
+      </div>
+      <div class="chart-container"><canvas id="chart"></canvas></div>
+      <p class="hint">Synthetic, deterministic simulation (no LLM). See README for methodology and limits.</p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>

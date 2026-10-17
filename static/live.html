@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DreamGuard Live</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🛡️ DreamGuard · Live</h1>
+    <p>Real Groq LLM compresses the memory, then answers 8 factual questions from what's left. <a href="/">← simulation</a></p>
+  </header>
+  <main>
+    <section class="panel">
+      <h2>Run the demo</h2>
+      <div class="buttons">
+        <button id="b-start">1 · Load scenario</button>
+        <button id="b-eval">2 · Evaluate</button>
+        <button id="b-dream">3 · Dream (compress)</button>
+        <button id="b-rollback" class="danger">4 · Rollback</button>
+      </div>
+      <p class="hint" id="status">Suggested order: 1 → 2 → 3 → 2 → 4 → 2. Evaluate after each step to see the chart move.</p>
+      <div class="chart-container"><canvas id="chart"></canvas></div>
+    </section>
+    <section class="panel">
+      <h2>What the agent remembers</h2>
+      <div class="stats">In-place dreaming</div>
+      <div id="ctx-inplace" class="log-box small"></div>
+      <div class="stats" style="margin-top:.8rem">DreamGuard</div>
+      <div id="ctx-guard" class="log-box small"></div>
+    </section>
+    <section class="panel wide">
+      <h2>Latest evaluation <span id="eval-label" class="muted"></span></h2>
+      <table id="results"><thead><tr><th>Question</th><th>Expected</th><th>In-place answer</th><th>DreamGuard answer</th></tr></thead><tbody></tbody></table>
+    </section>
+  </main>
+  <script src="/static/live.js"></script>
+</body>
+</html>
