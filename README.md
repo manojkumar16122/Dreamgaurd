@@ -28,7 +28,7 @@ Run the dashboard and open <http://localhost:8000>. It plots detail-recall accur
 | In-place dreaming | Rewrites memory, deletes raw data | Loss compounds, cannot recover |
 | **DreamGuard** | Compresses, keeps raw + provenance | Same loss as in-place, then **recovers to 100%** on rollback |
 
-> 📸 Add a screenshot or GIF here: `docs/demo.gif`
+> 📸 Demo Video `docs/DreamGaurd.mp4`
 
 ## Install
 
